@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 try{
-    mongoose.connect('mongodb://127.0.0.1:27017/Jobdata');
+    mongoose.connect('mongodb+srv://rushikesh:Rushi7887@cluster0.fllhqkj.mongodb.net/?retryWrites=true&w=majority');
     console.log("Connected to database");
 }
 catch(error){
