@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 try{
     mongoose.connect('mongodb+srv://rushikesh:Rushi7887@cluster0.fllhqkj.mongodb.net/?retryWrites=true&w=majority');
+    // mongoose.connect('mongodb+srv://rushikesh:Rushi7887@cluster0.fllhqkj.mongodb.net/');
     console.log("Connected to database");
 }
 catch(error){
