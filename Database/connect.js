@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
+require('dotenv').config();
+const DatabaseUrl = process.env.DatabaseUrl;
 
 try{
-    mongoose.connect('mongodb+srv://rushikesh:Rushi7887@cluster0.fllhqkj.mongodb.net/?retryWrites=true&w=majority');
-    // mongoose.connect('mongodb+srv://rushikesh:Rushi7887@cluster0.fllhqkj.mongodb.net/');
+    mongoose.connect(DatabaseUrl);
     console.log("Connected to database");
 }
 catch(error){
