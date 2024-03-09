@@ -8,7 +8,7 @@ const cors = require('cors');
 const app = express();
 app.use(express.json());
 app.use(cors());
-const port = 9000;
+const port = 9000 || process.env.port;
 
 
 app.post("/employeeregister", async (req, res) => {
