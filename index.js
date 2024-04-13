@@ -11,6 +11,7 @@ app.use(cors());
 const port = 9000 || process.env.port;
 
 
+// Register employee
 app.post("/employeeregister", async (req, res) => {
     let employee = new Employee(req.body);
     let result = await employee.save();
@@ -19,7 +20,7 @@ app.post("/employeeregister", async (req, res) => {
     res.send(result);
 })
 
-
+// Employee login
 app.post("/employeelogin", async (req, res) => {
     console.log(req.body);
     if (req.body.password && req.body.email) {
@@ -36,6 +37,7 @@ app.post("/employeelogin", async (req, res) => {
     }
 })
 
+// User register
 app.post("/userregister", async (req, res) => {
     let user = new User(req.body);
     let result = await user.save();
@@ -44,7 +46,7 @@ app.post("/userregister", async (req, res) => {
     res.send(result);
 })
 
-
+// User login
 app.post("/userlogin", async (req, res) => {
     console.log(req.body);
     if (req.body.password && req.body.email) {
@@ -61,7 +63,7 @@ app.post("/userlogin", async (req, res) => {
     }
 })
 
-
+// Add job to portal
 app.post("/add-job", async (req, res) => {
     let job = new Job(req.body);
 
@@ -75,6 +77,7 @@ app.post("/add-job", async (req, res) => {
     // result = result.toObject();
 })
 
+// Access all job
 app.get('/jobs', async (req, res) => {
     let jobs = await Job.find();
     if (jobs.length > 0) {
@@ -85,12 +88,13 @@ app.get('/jobs', async (req, res) => {
     }
 })
 
+//Delete the specific job 
 app.delete('/job/:id', async (req, res) => {
-    // res.send(req.params.id);
     const result = await Job.deleteOne({ _id: req.params.id });
     res.send(result);
 })
 
+// Get the job details by using Id
 app.get('/job/:id', async (req, res) => {
     const result = await Job.findOne({ _id: req.params.id });
     if (result) {
@@ -101,6 +105,7 @@ app.get('/job/:id', async (req, res) => {
     }
 })
 
+// Update the job Information
 app.put('/job/:id', async (req, res) => {
     let result = await Job.updateOne(
         { _id: req.params.id },
@@ -109,6 +114,7 @@ app.put('/job/:id', async (req, res) => {
     res.send(result);
 })
 
+// Search job
 app.get('/search/:key', async (req, res) => {
     let result = await Job.find({
         "$or": [
@@ -121,8 +127,6 @@ app.get('/search/:key', async (req, res) => {
     })
     res.send(result);
 })
-
-
 
 console.log("App is working");
 
